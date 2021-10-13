@@ -107,7 +107,6 @@ locals {
   ))
 }
 
-
 module "merge_values" {
   source                          = "dabble-of-devops-biodeploy/merge-values/helm"
   version                         = ">= 0.2.0"
@@ -116,7 +115,6 @@ module "merge_values" {
   helm_values_files               = local.helm_release_values_files
   helm_release_merged_values_file = var.helm_release_merged_values_file
 }
-
 
 resource "helm_release" "airflow" {
   depends_on = [
