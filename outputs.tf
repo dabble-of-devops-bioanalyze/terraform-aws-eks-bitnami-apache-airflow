@@ -35,5 +35,5 @@ output "helm_notes" {
 
 output "airflow_ingress" {
   description = "Outputs from installing the nginx ingress"
-  value = module.airflow_ingress
+  value       = module.airflow_ingress
 }

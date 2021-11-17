@@ -112,12 +112,12 @@ data "template_file" "airflow_external_db" {
   count    = var.use_external_db ? 1 : 0
   template = file("${path.module}/helm_charts/airflow/external_db.yaml.tpl")
   vars = {
-    external_db_host        = var.external_db_host,
-    external_db_user        = var.external_db_user,
-    external_db_secret      = var.external_db_secret,
-    external_db_name        = var.external_db_name,
-    external_db_type        = var.external_db_type,
-    external_db_port        = var.external_db_port
+    external_db_host   = var.external_db_host,
+    external_db_user   = var.external_db_user,
+    external_db_secret = var.external_db_secret,
+    external_db_name   = var.external_db_name,
+    external_db_type   = var.external_db_type,
+    external_db_port   = var.external_db_port
   }
 }
 

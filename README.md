@@ -197,8 +197,6 @@ Available targets:
 
 ## Inputs
 
-## Inputs
-
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_additional_tag_map"></a> [additional\_tag\_map](#input\_additional\_tag\_map) | Additional key-value pairs to add to each map in `tags_as_list_of_maps`. Not added to `tags` or `id`.<br>This is for some rare cases where resources want additional configuration of tags<br>and therefore take a list of maps with tag key, value, and additional configuration. | `map(string)` | `{}` | no |
@@ -438,4 +436,3 @@ Learn more at [Dabble of DevOps](https://www.dabbleofdevops.com)
   [share_googleplus]: https://plus.google.com/share?url=https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow
   [share_email]: mailto:?subject=terraform-aws-eks-bitnami-apache-airflow&body=https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow
   [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow?pixel&cs=github&cm=readme&an=terraform-aws-eks-bitnami-apache-airflow
-

@@ -166,16 +166,16 @@ variable "external_db_name" {
 }
 
 variable "external_db_secret" {
-  
+
 }
 variable "external_db_user" {
-  
+
 }
 
 variable "external_db_type" {
   default = "postgres"
 }
-variable "external_db_host" {  
+variable "external_db_host" {
 }
 
 variable "use_external_db" {

@@ -32,6 +32,7 @@
 |------|------|
 | [aws_route53_record.airflow](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [helm_release.airflow](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [local_file.rendered_aitflow_db](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_auth](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_ingress](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [null_resource.fernet](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
@@ -43,6 +44,7 @@
 | [kubernetes_service.airflow](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service) | data source |
 | [kubernetes_service.airflow_ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service) | data source |
 | [local_file.fernet](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
+| [template_file.airflow_external_db](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.auth](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.ingress](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
@@ -62,6 +64,12 @@
 | <a name="input_enable_ssl"></a> [enable\_ssl](#input\_enable\_ssl) | Enable SSL Support? | `bool` | `true` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to false to prevent the module from creating any resources | `bool` | `null` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | ID element. Usually used for region e.g. 'uw2', 'us-west-2', OR role 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
+| <a name="input_external_db_host"></a> [external\_db\_host](#input\_external\_db\_host) | n/a | `any` | n/a | yes |
+| <a name="input_external_db_name"></a> [external\_db\_name](#input\_external\_db\_name) | n/a | `string` | `"airflow"` | no |
+| <a name="input_external_db_port"></a> [external\_db\_port](#input\_external\_db\_port) | n/a | `number` | `5432` | no |
+| <a name="input_external_db_secret"></a> [external\_db\_secret](#input\_external\_db\_secret) | n/a | `any` | n/a | yes |
+| <a name="input_external_db_type"></a> [external\_db\_type](#input\_external\_db\_type) | n/a | `string` | `"postgres"` | no |
+| <a name="input_external_db_user"></a> [external\_db\_user](#input\_external\_db\_user) | n/a | `any` | n/a | yes |
 | <a name="input_helm_release_chart"></a> [helm\_release\_chart](#input\_helm\_release\_chart) | helm release chart | `string` | `"airflow"` | no |
 | <a name="input_helm_release_create_namespace"></a> [helm\_release\_create\_namespace](#input\_helm\_release\_create\_namespace) | n/a | `bool` | `true` | no |
 | <a name="input_helm_release_merged_values_file"></a> [helm\_release\_merged\_values\_file](#input\_helm\_release\_merged\_values\_file) | Path to merged helm files. This path must exist before the module is invoked. | `string` | n/a | yes |
@@ -89,6 +97,7 @@
 | <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | ID element \_(Rarely used, not included by default)\_. A customer identifier, indicating who this instance of a resource is for | `string` | `null` | no |
+| <a name="input_use_external_db"></a> [use\_external\_db](#input\_use\_external\_db) | n/a | `bool` | `false` | no |
 
 ## Outputs
 
