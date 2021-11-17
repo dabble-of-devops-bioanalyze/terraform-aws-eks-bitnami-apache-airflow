@@ -98,7 +98,7 @@ locals {
     compact(flatten([
       [
         [
-          abspath(local_file.rendered_ingress[0].filename),
+          try(abspath(local_file.rendered_ingress[0].filename), ""),
           abspath(local_file.rendered_auth.filename)
         ],
         [for s in var.helm_release_values_files : abspath(s)],
