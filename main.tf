@@ -123,9 +123,9 @@ data "template_file" "airflow_external_db" {
 resource "local_file" "rendered_aitflow_db" {
   count = var.use_external_db ? 1 : 0
   depends_on = [
-    data.template_file.airflow
+    data.template_file.airflow_external_db
   ]
-  content  = data.template_file.airflow[0].rendered
+  content  = data.template_file.airflow_external_db[0].rendered
   filename = "${var.helm_release_values_dir}/airflow_db_values.yaml"
 }
 
