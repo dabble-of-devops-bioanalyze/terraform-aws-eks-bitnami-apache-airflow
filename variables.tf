@@ -179,6 +179,7 @@ variable "external_db_host" {
 }
 
 variable "use_external_db" {
+  default = false
 }
 
 variable "external_db_port" {
