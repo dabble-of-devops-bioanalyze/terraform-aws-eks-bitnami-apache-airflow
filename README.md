@@ -439,33 +439,3 @@ Learn more at [Dabble of DevOps](https://www.dabbleofdevops.com)
   [share_email]: mailto:?subject=terraform-aws-eks-bitnami-apache-airflow&body=https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow
   [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow?pixel&cs=github&cm=readme&an=terraform-aws-eks-bitnami-apache-airflow
 
-<!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | >= 1.2 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 2.2 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
-| <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
-| <a name="provider_local"></a> [local](#provider\_local) | >= 1.2 |
-| <a name="provider_null"></a> [null](#provider\_null) | n/a |
-| <a name="provider_template"></a> [template](#provider\_template) | n/a |
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_airflow_ingress"></a> [airflow\_ingress](#module\_airflow\_ingress) | dabble-of-devops-bioanalyze/eks-bitnami-nginx-ingress/aws | >= 0.1.0 |
-| <a name="module_merge_values"></a> [merge\_values](#module\_merge\_values) | dabble-of-devops-biodeploy/merge-values/helm | >= 0.2.0 |
-| <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
-
-
-
