@@ -179,7 +179,7 @@ Available targets:
 |------|------|
 | [aws_route53_record.airflow](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [helm_release.airflow](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
-| [local_file.rendered_aitflow_db](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
+| [local_file.rendered_airflow_db](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_auth](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_ingress](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [null_resource.fernet](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
@@ -343,6 +343,17 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  4. **Push** your work back up to your fork
  5. Submit a **Pull Request** so that we can review your changes
 
+#### Developer Notes
+
+The `README.md` is created using the standard [CloudPosse](https://github.com/cloudposse/terraform-example-module) template that has been modified to use BioAnalyze information and URLs, and other documentation is generated using [jupyter-book](https://jupyterbook.org/).
+
+Terraform code does not render properly when using the `literalinclude` directive, so instead we use `pygmentize` to render it to html which is included directly.
+
+```
+.. raw:: html
+   :file: ./_html/main.tf.html
+```
+
 **NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
 
 
@@ -398,13 +409,18 @@ All other trademarks referenced herein are the property of their respective owne
 
 <!-- markdownlint-disable -->
 |  [![Jillian Rowe][jerowe_avatar]][jerowe_homepage]<br/>[Jillian Rowe][jerowe_homepage] |
-|---|
 <!-- markdownlint-restore -->
 
   [jerowe_homepage]: https://github.com/jerowe
   [jerowe_avatar]: https://img.cloudposse.com/150x150/https://github.com/jerowe.png
 
 Learn more at [Dabble of DevOps](https://www.dabbleofdevops.com)
+
+## Sponsor
+
+BioAnalyze is and will always be open source. If you've found any of these resources helpful, please consider donating to the continued development of BioAnalyze.
+
+[Sponsor BioAnalyze](https://github.com/sponsors/dabble-of-devops-bioanalyze)
 
   [logo]: https://cloudposse.com/logo-300x69.svg
   [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow&utm_content=docs

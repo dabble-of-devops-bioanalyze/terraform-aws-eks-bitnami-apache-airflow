@@ -32,7 +32,7 @@
 |------|------|
 | [aws_route53_record.airflow](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [helm_release.airflow](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
-| [local_file.rendered_aitflow_db](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
+| [local_file.rendered_airflow_db](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_auth](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_ingress](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [null_resource.fernet](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
