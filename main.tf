@@ -99,7 +99,7 @@ locals {
       [
         [
           try(abspath(local_file.rendered_ingress[0].filename), ""),
-          try(abspath(local_file.rendered_aitflow_db[0].filename), ""),
+          try(abspath(local_file.rendered_airflow_db[0].filename), ""),
           abspath(local_file.rendered_auth.filename)
         ],
         [for s in var.helm_release_values_files : abspath(s)],
@@ -121,7 +121,7 @@ data "template_file" "airflow_external_db" {
   }
 }
 
-resource "local_file" "rendered_aitflow_db" {
+resource "local_file" "rendered_airflow_db" {
   count = var.use_external_db ? 1 : 0
   depends_on = [
     data.template_file.airflow_external_db
@@ -130,10 +130,9 @@ resource "local_file" "rendered_aitflow_db" {
   filename = "${var.helm_release_values_dir}/airflow_db_values.yaml"
 }
 
-
 module "merge_values" {
   depends_on = [
-    local_file.rendered_aitflow_db,
+    local_file.rendered_airflow_db,
     local_file.rendered_auth
   ]
   source                          = "dabble-of-devops-biodeploy/merge-values/helm"
