@@ -160,3 +160,28 @@ variable "module_aws_eks_bitnami_nginx_ingress_version" {
   type    = string
   default = "0.1.0"
 }
+
+variable "external_db_name" {
+  default = "airflow"
+}
+
+variable "external_db_secret" {
+
+}
+variable "external_db_user" {
+
+}
+
+variable "external_db_type" {
+  default = "postgres"
+}
+variable "external_db_host" {
+}
+
+variable "use_external_db" {
+  default = false
+}
+
+variable "external_db_port" {
+  default = 5432
+}

@@ -179,6 +179,7 @@ Available targets:
 |------|------|
 | [aws_route53_record.airflow](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [helm_release.airflow](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [local_file.rendered_airflow_db](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_auth](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [local_file.rendered_ingress](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 | [null_resource.fernet](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
@@ -190,6 +191,7 @@ Available targets:
 | [kubernetes_service.airflow](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service) | data source |
 | [kubernetes_service.airflow_ingress](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/data-sources/service) | data source |
 | [local_file.fernet](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
+| [template_file.airflow_external_db](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.auth](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.ingress](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
@@ -209,6 +211,12 @@ Available targets:
 | <a name="input_enable_ssl"></a> [enable\_ssl](#input\_enable\_ssl) | Enable SSL Support? | `bool` | `true` | no |
 | <a name="input_enabled"></a> [enabled](#input\_enabled) | Set to false to prevent the module from creating any resources | `bool` | `null` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | ID element. Usually used for region e.g. 'uw2', 'us-west-2', OR role 'prod', 'staging', 'dev', 'UAT' | `string` | `null` | no |
+| <a name="input_external_db_host"></a> [external\_db\_host](#input\_external\_db\_host) | n/a | `any` | n/a | yes |
+| <a name="input_external_db_name"></a> [external\_db\_name](#input\_external\_db\_name) | n/a | `string` | `"airflow"` | no |
+| <a name="input_external_db_port"></a> [external\_db\_port](#input\_external\_db\_port) | n/a | `number` | `5432` | no |
+| <a name="input_external_db_secret"></a> [external\_db\_secret](#input\_external\_db\_secret) | n/a | `any` | n/a | yes |
+| <a name="input_external_db_type"></a> [external\_db\_type](#input\_external\_db\_type) | n/a | `string` | `"postgres"` | no |
+| <a name="input_external_db_user"></a> [external\_db\_user](#input\_external\_db\_user) | n/a | `any` | n/a | yes |
 | <a name="input_helm_release_chart"></a> [helm\_release\_chart](#input\_helm\_release\_chart) | helm release chart | `string` | `"airflow"` | no |
 | <a name="input_helm_release_create_namespace"></a> [helm\_release\_create\_namespace](#input\_helm\_release\_create\_namespace) | n/a | `bool` | `true` | no |
 | <a name="input_helm_release_merged_values_file"></a> [helm\_release\_merged\_values\_file](#input\_helm\_release\_merged\_values\_file) | Path to merged helm files. This path must exist before the module is invoked. | `string` | n/a | yes |
@@ -236,6 +244,7 @@ Available targets:
 | <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
 | <a name="input_tenant"></a> [tenant](#input\_tenant) | ID element \_(Rarely used, not included by default)\_. A customer identifier, indicating who this instance of a resource is for | `string` | `null` | no |
+| <a name="input_use_external_db"></a> [use\_external\_db](#input\_use\_external\_db) | n/a | `bool` | `false` | no |
 
 ## Outputs
 
@@ -334,6 +343,17 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  4. **Push** your work back up to your fork
  5. Submit a **Pull Request** so that we can review your changes
 
+#### Developer Notes
+
+The `README.md` is created using the standard [CloudPosse](https://github.com/cloudposse/terraform-example-module) template that has been modified to use BioAnalyze information and URLs, and other documentation is generated using [jupyter-book](https://jupyterbook.org/).
+
+Terraform code does not render properly when using the `literalinclude` directive, so instead we use `pygmentize` to render it to html which is included directly.
+
+```
+.. raw:: html
+   :file: ./_html/main.tf.html
+```
+
 **NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
 
 
@@ -389,13 +409,18 @@ All other trademarks referenced herein are the property of their respective owne
 
 <!-- markdownlint-disable -->
 |  [![Jillian Rowe][jerowe_avatar]][jerowe_homepage]<br/>[Jillian Rowe][jerowe_homepage] |
-|---|
 <!-- markdownlint-restore -->
 
   [jerowe_homepage]: https://github.com/jerowe
   [jerowe_avatar]: https://img.cloudposse.com/150x150/https://github.com/jerowe.png
 
 Learn more at [Dabble of DevOps](https://www.dabbleofdevops.com)
+
+## Sponsor
+
+BioAnalyze is and will always be open source. If you've found any of these resources helpful, please consider donating to the continued development of BioAnalyze.
+
+[Sponsor BioAnalyze](https://github.com/sponsors/dabble-of-devops-bioanalyze)
 
   [logo]: https://cloudposse.com/logo-300x69.svg
   [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow&utm_content=docs

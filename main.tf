@@ -98,7 +98,8 @@ locals {
     compact(flatten([
       [
         [
-          abspath(local_file.rendered_ingress[0].filename),
+          try(abspath(local_file.rendered_ingress[0].filename), ""),
+          try(abspath(local_file.rendered_airflow_db[0].filename), ""),
           abspath(local_file.rendered_auth.filename)
         ],
         [for s in var.helm_release_values_files : abspath(s)],
@@ -106,8 +107,34 @@ locals {
     ]))
   ))
 }
+###############External_dabase############
+data "template_file" "airflow_external_db" {
+  count    = var.use_external_db ? 1 : 0
+  template = file("${path.module}/helm_charts/airflow/external_db.yaml.tpl")
+  vars = {
+    external_db_host   = var.external_db_host,
+    external_db_user   = var.external_db_user,
+    external_db_secret = var.external_db_secret,
+    external_db_name   = var.external_db_name,
+    external_db_type   = var.external_db_type,
+    external_db_port   = var.external_db_port
+  }
+}
+
+resource "local_file" "rendered_airflow_db" {
+  count = var.use_external_db ? 1 : 0
+  depends_on = [
+    data.template_file.airflow_external_db
+  ]
+  content  = data.template_file.airflow_external_db[0].rendered
+  filename = "${var.helm_release_values_dir}/airflow_db_values.yaml"
+}
 
 module "merge_values" {
+  depends_on = [
+    local_file.rendered_airflow_db,
+    local_file.rendered_auth
+  ]
   source                          = "dabble-of-devops-biodeploy/merge-values/helm"
   version                         = ">= 0.2.0"
   context                         = module.this.context
