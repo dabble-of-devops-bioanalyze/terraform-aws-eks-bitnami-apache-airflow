@@ -49,26 +49,16 @@ variable "helm_release_chart" {
   default     = "airflow"
 }
 
-variable "helm_release_namespace" {
-  type        = string
-  description = "helm release namespace"
-  default     = "default"
-}
 
 variable "helm_release_version" {
   type        = string
   description = "helm release version"
-  default     = "11.0.8"
+  default     = "12.0.10"
 }
 
 variable "helm_release_wait" {
   type    = bool
-  default = true
-}
-
-variable "helm_release_create_namespace" {
-  type    = bool
-  default = true
+  default = false
 }
 
 variable "helm_release_values_dir" {
@@ -83,10 +73,6 @@ variable "helm_release_values_files" {
   default     = []
 }
 
-variable "helm_release_merged_values_file" {
-  type        = string
-  description = "Path to merged helm files. This path must exist before the module is invoked."
-}
 
 ##################################################
 # Airflow Specific Variables
@@ -127,7 +113,20 @@ variable "enable_ssl" {
   default     = true
 }
 
-# these variables are only needed if enable_ssl == true
+variable "render_ingress" {
+  type = bool
+  default = true
+}
+
+variable "use_existing_ingress" {
+  type = bool
+  default = true
+}
+
+variable "render_cluster_issuer" {
+  type = bool
+  default = false
+}
 
 variable "letsencrypt_email" {
   type        = string
@@ -135,10 +134,10 @@ variable "letsencrypt_email" {
   default     = "hello@gmail.com"
 }
 
-variable "aws_route53_zone_name" {
+variable "aws_route53_zone_name" { 
   type        = string
   description = "Name of the zone to add records. Do not forget the trailing '.' - 'test.com.'"
-  default     = "test.com."
+  default     = "bioanalyzedev.com."
 }
 
 variable "aws_route53_record_name" {
@@ -147,35 +146,37 @@ variable "aws_route53_record_name" {
   default     = "www"
 }
 
-##################################################
-# Module Versions
-##################################################
-
-variable "module_helm_merge_values_version" {
-  type    = string
-  default = "0.2.0"
+variable "aws_route53_zone_id" {
+  type        = string
+  description = "AWS route_53 zone ID for airflow"
+  default = ""
+  
 }
 
-variable "module_aws_eks_bitnami_nginx_ingress_version" {
-  type    = string
-  default = "0.1.0"
-}
+##################################################
+# External database
+##################################################
+
 
 variable "external_db_name" {
   default = "airflow"
 }
 
 variable "external_db_secret" {
+  default = ""
 
 }
 variable "external_db_user" {
+  default = ""
 
 }
 
 variable "external_db_type" {
   default = "postgres"
 }
+
 variable "external_db_host" {
+  default = ""
 }
 
 variable "use_external_db" {
@@ -184,4 +185,55 @@ variable "use_external_db" {
 
 variable "external_db_port" {
   default = 5432
+}
+
+#########################################################################
+# Remote logging settings
+#########################################################################
+
+variable "remote_logging" {
+  default = false
+}
+
+variable "remote_base_log_folder" {
+  default = ""
+}
+
+variable "remote_log_conn_id" {
+  default = "aws_default"
+}
+
+variable "encrypt_s3_logs" {
+  default = "False"
+}
+
+variable "logging_level"{
+  default = "DEBUG"
+}
+
+variable "provider_urls" { 
+  description = "List of URLs of the OIDC Providers" 
+  default = []
+}
+
+variable "oidc_fully_qualified_subjects" {
+  description = "The fully qualified OIDC subjects to be added to the role policy"
+  type        = set(string)
+  default     = ["sts.amazonaws.com"]
+}
+
+
+variable "aws_elb_dns_name" {
+  type = string
+  description = "DNS of AWS ELB for ingress controller" 
+}
+
+variable "aws_elb_zone_id" {
+  type        = string
+  description = "AWS ELB zone id for ingress controller"
+}
+
+variable "helm_release_namespace" {
+  type        = string
+  description = "helm release namespace for BioAnalyze deployment"
 }

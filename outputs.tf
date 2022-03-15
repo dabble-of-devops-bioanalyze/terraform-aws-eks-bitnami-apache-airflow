@@ -1,5 +1,5 @@
 output "helm_release" {
-  value = helm_release.airflow
+  value = module.airflow
 }
 
 output "helm_notes" {
@@ -29,11 +29,6 @@ output "helm_notes" {
     --set auth.secretKey=$AIRFLOW_SECRETKEY \
     --set postgresql.postgresqlPassword=$POSTGRESQL_PASSWORD \
     --set redis.auth.password=$REDIS_PASSWORD \
-    --values ${var.helm_release_merged_values_file}
   EOT
 }
 
-output "airflow_ingress" {
-  description = "Outputs from installing the nginx ingress"
-  value       = module.airflow_ingress
-}
