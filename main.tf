@@ -230,16 +230,16 @@ module "airflow" {
    ]
   source  = "git::https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-helm.git"
   # DNS
-  aws_route53_record_name    = var.aws_route53_record_name
-  aws_elb_zone_id            = var.aws_elb_zone_id
-  aws_elb_dns_name           = var.aws_elb_dns_name
-  helm_release_name          = var.helm_release_name
-  helm_release_repository    = var.helm_release_repository
-  helm_release_chart         = var.helm_release_chart
-  helm_release_version       = var.helm_release_version
-  helm_release_wait          = var.helm_release_wait
-  helm_release_values_files  = local.helm_release_values_files //["helm_charts/airflow_values.yaml", "helm_charts/airflow_remote_logs.yaml", "helm_charts/auth.yaml"] 
-  helm_release_values_dir    = var.helm_release_values_dir
+  aws_route53_record_name    =  var.aws_route53_record_name
+  aws_elb_zone_id            =  var.aws_elb_zone_id
+  aws_elb_dns_name           =  var.aws_elb_dns_name
+  helm_release_name          =  var.helm_release_name
+  helm_release_repository    =  var.helm_release_repository
+  helm_release_chart         =  var.helm_release_chart
+  helm_release_version       =  var.helm_release_version
+  helm_release_wait          =  var.helm_release_wait
+  helm_release_values_files  =  local.helm_release_values_files //["helm_charts/airflow_values.yaml", "helm_charts/airflow_remote_logs.yaml", "helm_charts/auth.yaml"] 
+  helm_release_values_dir    =  var.helm_release_values_dir
   enable_ssl                 =  var.enable_ssl
   render_cluster_issuer      =  var.render_cluster_issuer
   use_existing_ingress       =  var.use_existing_ingress
