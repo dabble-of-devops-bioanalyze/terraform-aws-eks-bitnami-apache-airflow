@@ -11,12 +11,12 @@ locals {
       ]
     ]))
   ))
-  aws_account_id =  data.aws_caller_identity.current.account_id
+  aws_account_id = data.aws_caller_identity.current.account_id
   urls = [
-    for url in distinct(var.provider_urls):
+    for url in distinct(var.provider_urls) :
     replace(url, "https://", "")
   ]
-  bucket_name = format("%s-arflow-logs", var.name) 
+  bucket_name            = format("%s-arflow-logs", var.name)
   helm_release_namespace = var.helm_release_namespace
 }
 
@@ -97,14 +97,14 @@ resource "local_file" "rendered_airflow_db" {
 #########################################################################
 
 data "template_file" "airflow_remote_logging" {
-  count = var.remote_logging ? 1 : 0
+  count    = var.remote_logging ? 1 : 0
   template = file("${path.module}/helm_charts/airflow/airflow_remote_logs.yaml.tpl")
   vars = {
-      remote_base_log_folder = format("s3://%s", local.bucket_name),
-      remote_log_conn_id     = var.remote_log_conn_id,
-      encrypt_s3_logs        = var.encrypt_s3_logs,
-      logging_level          = var.logging_level,
-      s3_logs_sa_name        = kubernetes_service_account.eks_s3.metadata[0].name 
+    remote_base_log_folder = format("s3://%s", local.bucket_name),
+    remote_log_conn_id     = var.remote_log_conn_id,
+    encrypt_s3_logs        = var.encrypt_s3_logs,
+    logging_level          = var.logging_level,
+    s3_logs_sa_name        = kubernetes_service_account.eks_s3.metadata[0].name
   }
 }
 
@@ -123,12 +123,12 @@ data "aws_caller_identity" "current" {}
 data "aws_partition" "current" {}
 
 module "s3_bucket" {
-  name = local.bucket_name  
-  source = "cloudposse/s3-bucket/aws"
-  versioning_enabled       = false
-  acl                      = "private"
-  user_enabled             = false
-  allowed_bucket_actions   = ["s3:GetObject", "s3:ListBucket", "s3:GetBucketLocation"]
+  name                   = local.bucket_name
+  source                 = "cloudposse/s3-bucket/aws"
+  versioning_enabled     = false
+  acl                    = "private"
+  user_enabled           = false
+  allowed_bucket_actions = ["s3:GetObject", "s3:ListBucket", "s3:GetBucketLocation"]
 }
 
 data "aws_iam_policy_document" "s3-logs-eks" {
@@ -175,7 +175,7 @@ data "aws_iam_policy_document" "assume_role_with_oidc" {
       }
 
       dynamic "condition" {
-        for_each = local.urls 
+        for_each = local.urls
 
         content {
           test     = "StringEquals"
@@ -190,21 +190,21 @@ data "aws_iam_policy_document" "assume_role_with_oidc" {
 
 
 resource "aws_iam_role" "logs" {
-  assume_role_policy = join("", data.aws_iam_policy_document.assume_role_with_oidc.*.json)
-  description =  ""
-  managed_policy_arns =  [resource.aws_iam_policy.s3-logs-eks.arn]
-  max_session_duration=  3600
-  name =  format("%s-airflow-logs-role", var.name)
-  path =  "/"
-  permissions_boundary =  null
-  tags =  {}
+  assume_role_policy   = join("", data.aws_iam_policy_document.assume_role_with_oidc.*.json)
+  description          = ""
+  managed_policy_arns  = [resource.aws_iam_policy.s3-logs-eks.arn]
+  max_session_duration = 3600
+  name                 = format("%s-airflow-logs-role", var.name)
+  path                 = "/"
+  permissions_boundary = null
+  tags                 = {}
 }
 
 
 resource "kubernetes_namespace" "airflow_ns" {
   metadata {
     annotations = {
-      name = var.helm_release_namespace 
+      name = var.helm_release_namespace
     }
     name = var.helm_release_namespace
   }
@@ -213,42 +213,42 @@ resource "kubernetes_namespace" "airflow_ns" {
 resource "kubernetes_service_account" "eks_s3" {
   depends_on = [kubernetes_namespace.airflow_ns]
   metadata {
-    name = "clienta-org-s3-aitflow-logs"
+    name      = "clienta-org-s3-aitflow-logs"
     namespace = var.helm_release_namespace
     annotations = {
-      "eks.amazonaws.com/role-arn" = format("arn:aws:iam::018835827632:role/%s", aws_iam_role.logs.name) 
+      "eks.amazonaws.com/role-arn" = format("arn:aws:iam::018835827632:role/%s", aws_iam_role.logs.name)
     }
-  }  
+  }
 }
 
 
 module "airflow" {
   depends_on = [
-     local_file.rendered_airflow_db,
-     local_file.rendered_auth,
-     local_file.rendered_airflow_remote_logs
-   ]
-  source  = "git::https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-helm.git"
+    local_file.rendered_airflow_db,
+    local_file.rendered_auth,
+    local_file.rendered_airflow_remote_logs
+  ]
+  source = "git::https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-helm.git"
   # DNS
-  aws_route53_record_name    =  var.aws_route53_record_name
-  aws_elb_zone_id            =  var.aws_elb_zone_id
-  aws_elb_dns_name           =  var.aws_elb_dns_name
-  helm_release_name          =  var.helm_release_name
-  helm_release_repository    =  var.helm_release_repository
-  helm_release_chart         =  var.helm_release_chart
-  helm_release_version       =  var.helm_release_version
-  helm_release_wait          =  var.helm_release_wait
-  helm_release_values_files  =  local.helm_release_values_files //["helm_charts/airflow_values.yaml", "helm_charts/airflow_remote_logs.yaml", "helm_charts/auth.yaml"] 
-  helm_release_values_dir    =  var.helm_release_values_dir
-  enable_ssl                 =  var.enable_ssl
-  render_cluster_issuer      =  var.render_cluster_issuer
-  use_existing_ingress       =  var.use_existing_ingress
-  render_ingress             =  var.render_ingress
-  letsencrypt_email          =  var.letsencrypt_email
-  aws_route53_zone_name      =  var.aws_route53_zone_name
-  aws_route53_zone_id        =  var.aws_route53_zone_id
-  helm_release_namespace     =  var.helm_release_namespace
-  context                    =  module.this.context
+  aws_route53_record_name   = var.aws_route53_record_name
+  aws_elb_zone_id           = var.aws_elb_zone_id
+  aws_elb_dns_name          = var.aws_elb_dns_name
+  helm_release_name         = var.helm_release_name
+  helm_release_repository   = var.helm_release_repository
+  helm_release_chart        = var.helm_release_chart
+  helm_release_version      = var.helm_release_version
+  helm_release_wait         = var.helm_release_wait
+  helm_release_values_files = local.helm_release_values_files //["helm_charts/airflow_values.yaml", "helm_charts/airflow_remote_logs.yaml", "helm_charts/auth.yaml"] 
+  helm_release_values_dir   = var.helm_release_values_dir
+  enable_ssl                = var.enable_ssl
+  render_cluster_issuer     = var.render_cluster_issuer
+  use_existing_ingress      = var.use_existing_ingress
+  render_ingress            = var.render_ingress
+  letsencrypt_email         = var.letsencrypt_email
+  aws_route53_zone_name     = var.aws_route53_zone_name
+  aws_route53_zone_id       = var.aws_route53_zone_id
+  helm_release_namespace    = var.helm_release_namespace
+  context                   = module.this.context
 
 }
 

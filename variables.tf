@@ -114,17 +114,17 @@ variable "enable_ssl" {
 }
 
 variable "render_ingress" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "use_existing_ingress" {
-  type = bool
+  type    = bool
   default = true
 }
 
 variable "render_cluster_issuer" {
-  type = bool
+  type    = bool
   default = false
 }
 
@@ -134,7 +134,7 @@ variable "letsencrypt_email" {
   default     = "hello@gmail.com"
 }
 
-variable "aws_route53_zone_name" { 
+variable "aws_route53_zone_name" {
   type        = string
   description = "Name of the zone to add records. Do not forget the trailing '.' - 'test.com.'"
   default     = "bioanalyzedev.com."
@@ -149,8 +149,8 @@ variable "aws_route53_record_name" {
 variable "aws_route53_zone_id" {
   type        = string
   description = "AWS route_53 zone ID for airflow"
-  default = ""
-  
+  default     = ""
+
 }
 
 ##################################################
@@ -207,13 +207,13 @@ variable "encrypt_s3_logs" {
   default = "False"
 }
 
-variable "logging_level"{
+variable "logging_level" {
   default = "DEBUG"
 }
 
-variable "provider_urls" { 
-  description = "List of URLs of the OIDC Providers" 
-  default = []
+variable "provider_urls" {
+  description = "List of URLs of the OIDC Providers"
+  default     = []
 }
 
 variable "oidc_fully_qualified_subjects" {
@@ -224,8 +224,8 @@ variable "oidc_fully_qualified_subjects" {
 
 
 variable "aws_elb_dns_name" {
-  type = string
-  description = "DNS of AWS ELB for ingress controller" 
+  type        = string
+  description = "DNS of AWS ELB for ingress controller"
 }
 
 variable "aws_elb_zone_id" {
