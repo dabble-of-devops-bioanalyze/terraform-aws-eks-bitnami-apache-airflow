@@ -5,7 +5,9 @@
  [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-example-module.svg)](https://github.com/cloudposse/terraform-example-module/releases/latest) [![Discourse Forum](https://img.shields.io/discourse/https/ask.sweetops.com/posts.svg)](https://ask.sweetops.com/)
 <!-- markdownlint-restore -->
 
-![BioAnalyze Logo](https://raw.githubusercontent.com/Dabble-of-DevOps-BioAnalyze/biohub-info/master/logos/BioAnalyze_v2-01.jpg)
+[![README Header][readme_header_img]][readme_header_link]
+
+[![Cloud Posse][logo]](https://cpco.io/homepage)
 
 <!--
 
@@ -33,7 +35,17 @@ Terraform module to deploy a multiuser Jupyterhub + Dask Cluster on an existing 
 
 ---
 
-This project is part of the ["BioAnalyze"](https://www.dabbleofdevops.com/biohub) project, which aims to make High Performance Compute Architecture accessible to everyone.
+This project is part of our comprehensive ["SweetOps"](https://cpco.io/sweetops) approach towards DevOps.
+[<img align="right" title="Share via Email" src="https://docs.cloudposse.com/images/ionicons/ios-email-outline-2.0.1-16x16-999999.svg"/>][share_email]
+[<img align="right" title="Share on Google+" src="https://docs.cloudposse.com/images/ionicons/social-googleplus-outline-2.0.1-16x16-999999.svg" />][share_googleplus]
+[<img align="right" title="Share on Facebook" src="https://docs.cloudposse.com/images/ionicons/social-facebook-outline-2.0.1-16x16-999999.svg" />][share_facebook]
+[<img align="right" title="Share on Reddit" src="https://docs.cloudposse.com/images/ionicons/social-reddit-outline-2.0.1-16x16-999999.svg" />][share_reddit]
+[<img align="right" title="Share on LinkedIn" src="https://docs.cloudposse.com/images/ionicons/social-linkedin-outline-2.0.1-16x16-999999.svg" />][share_linkedin]
+[<img align="right" title="Share on Twitter" src="https://docs.cloudposse.com/images/ionicons/social-twitter-outline-2.0.1-16x16-999999.svg" />][share_twitter]
+
+
+[![Terraform Open Source Modules](https://docs.cloudposse.com/images/terraform-open-source-modules.svg)][terraform_modules]
+
 
 
 It's 100% Open Source and licensed under the [APACHE2](LICENSE).
@@ -43,9 +55,9 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 
 
-## Data Science Infrastructure on AWS
 
-![BioAnalyze Logo](https://raw.githubusercontent.com/dabble-of-devops-bioanalyze/biohub-info/master/images/BioAnalyze-Ecosystem-Data-Visualization.jpeg)
+We literally have [*hundreds of terraform modules*][terraform_modules] that are Open Source and well-maintained. Check them out!
+
 
 
 
@@ -55,16 +67,33 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 This module installs the [Bitnami Apache Airflow helm chart](https://bitnami.com/stack/apache-airflow/helm) to an AWS EKS cluster. It will optionally setup an NGINX ingress for SSL and create AWS Route53 records.
 
 
+## Security & Compliance [<img src="https://cloudposse.com/wp-content/uploads/2020/11/bridgecrew.svg" width="250" align="right" />](https://bridgecrew.io/)
+
+Security scanning is graciously provided by Bridgecrew. Bridgecrew is the leading fully hosted, cloud-native solution providing continuous Terraform security and compliance.
+
+| Benchmark | Description |
+|--------|---------------|
+| [![Infrastructure Security](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=INFRASTRUCTURE+SECURITY) | Infrastructure Security Compliance |
+| [![CIS KUBERNETES](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/cis_kubernetes)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=CIS+KUBERNETES+V1.5) | Center for Internet Security, KUBERNETES Compliance |
+| [![CIS AWS](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/cis_aws)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=CIS+AWS+V1.2) | Center for Internet Security, AWS Compliance |
+| [![CIS AZURE](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/cis_azure)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=CIS+AZURE+V1.1) | Center for Internet Security, AZURE Compliance |
+| [![PCI-DSS](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=PCI-DSS+V3.2) | Payment Card Industry Data Security Standards Compliance |
+| [![NIST-800-53](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=NIST-800-53) | National Institute of Standards and Technology Compliance |
+| [![ISO27001](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/iso)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=ISO27001) | Information Security Management System, ISO/IEC 27001 Compliance |
+| [![SOC2](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/soc2)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=SOC2)| Service Organization Control 2 Compliance |
+| [![CIS GCP](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=CIS+GCP+V1.1) | Center for Internet Security, GCP Compliance |
+| [![HIPAA](https://www.bridgecrew.cloud/badges/github/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=dabble-of-devops-bioanalyze%2Fterraform-aws-eks-bitnami-apache-airflow&benchmark=HIPAA) | Health Insurance Portability and Accountability Compliance |
+
+
+
+## Usage
+
 
 **IMPORTANT:** We do not pin modules to versions in our examples because of the
 difficulty of keeping the versions in the documentation in sync with the latest released versions.
 We highly recommend that in your code you pin the version to the exact version you are
 using so that your infrastructure remains stable, and update versions in a
 systematic way so that they do not catch you by surprise.
-
-Also, because of a bug in the Terraform registry ([hashicorp/terraform#21417](https://github.com/hashicorp/terraform/issues/21417)),
-the registry shows many of our inputs as required when in fact they are optional.
-The table below correctly indicates which inputs are required.
 
 
 For a complete example, see [examples/complete](examples/complete).
@@ -124,6 +153,8 @@ For automated tests of the complete example using [bats](https://github.com/bats
     value = module.helm_release_airflow
   }
 ```
+
+
 
 
 ## Examples
@@ -269,10 +300,11 @@ Available targets:
 
 
 
-
 ## Share the Love
 
-Like this project? Please give it a ★ on [our GitHub](https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow)! (it helps **a lot**)
+Like this project? Please give it a ★ on [our GitHub](https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow)! (it helps us **a lot**)
+
+Are you using this project or any of our other projects? Consider [leaving a testimonial][testimonial]. =)
 
 
 
@@ -316,25 +348,49 @@ For additional context, refer to some of these links.
 
 **Got a question?** We got answers.
 
-File a GitHub [issue](https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/issues), send us an jillian@dabbleofdevops.com.
+File a GitHub [issue](https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow/issues), send us an [email][email] or join our [Slack Community][slack].
 
-## Bioinformatics Infrastructure on AWS for Startups
+[![README Commercial Support][readme_commercial_support_img]][readme_commercial_support_link]
 
-I'll help you build your data science cloud infrastructure from the ground up so you can own it using open source software. Then I'll show you how to operate it and stick around for as long as you need us.
+## DevOps Accelerator for Startups
 
-[Learn More](https://www.dabbleofdevops.com)
 
-Work directly with me via email, slack, and video conferencing.
+We are a [**DevOps Accelerator**][commercial_support]. We'll help you build your cloud infrastructure from the ground up so you can own it. Then we'll show you how to operate it and stick around for as long as you need us.
 
-- **Scientific Workflow Automation and Optimization.** Got workflows that are giving you trouble? Let's work together to ensure that your analyses run with or without your scientists being fully caffeinated.
-- **High Performance Compute Infrastructure.** Highly available, auto scaling clusters to analyze *all the (bioinformatics related!) things*. All setups are completely integrated with your workflow system of choice, whether that is Airflow, Prefect, Snakemake or Nextflow.
-- **Kubernetes and AWS Batch Setup for Apache Airflow** Orchestrate your Bioinformatics Workflows with Apache Airflow. Get full auditing, SLA, logging and monitoring for your workflows running on AWS Batch.
-- **High Performance Compute Setup that Int** You'll have built-in governance with accountability and audit logs for all changes.
-- **Docker Images** Get advice and hands on training for your team to build complex software stacks onto docker images.
+[![Learn More](https://img.shields.io/badge/learn%20more-success.svg?style=for-the-badge)][commercial_support]
+
+Work directly with our team of DevOps experts via email, slack, and video conferencing.
+
+We deliver 10x the value for a fraction of the cost of a full-time engineer. Our track record is not even funny. If you want things done right and you need it done FAST, then we're your best bet.
+
+- **Reference Architecture.** You'll get everything you need from the ground up built using 100% infrastructure as code.
+- **Release Engineering.** You'll have end-to-end CI/CD with unlimited staging environments.
+- **Site Reliability Engineering.** You'll have total visibility into your apps and microservices.
+- **Security Baseline.** You'll have built-in governance with accountability and audit logs for all changes.
+- **GitOps.** You'll be able to operate your infrastructure via Pull Requests.
 - **Training.** You'll receive hands-on training so your team can operate what we build.
 - **Questions.** You'll have a direct line of communication between our teams via a Shared Slack channel.
 - **Troubleshooting.** You'll get help to triage when things aren't working.
+- **Code Reviews.** You'll receive constructive feedback on Pull Requests.
 - **Bug Fixes.** We'll rapidly work with you to fix any bugs in our projects.
+
+## Slack Community
+
+Join our [Open Source Community][slack] on Slack. It's **FREE** for everyone! Our "SweetOps" community is where you get to talk with others who share a similar vision for how to rollout and manage infrastructure. This is the best place to talk shop, ask questions, solicit feedback, and work together as a community to build totally *sweet* infrastructure.
+
+## Discourse Forums
+
+Participate in our [Discourse Forums][discourse]. Here you'll find answers to commonly asked questions. Most questions will be related to the enormous number of projects we support on our GitHub. Come here to collaborate on answers, find solutions, and get ideas about the products and services we value. It only takes a minute to get started! Just sign in with SSO using your GitHub account.
+
+## Newsletter
+
+Sign up for [our newsletter][newsletter] that covers everything on our technology radar.  Receive updates on what we're up to on GitHub as well as awesome new projects we discover.
+
+## Office Hours
+
+[Join us every Wednesday via Zoom][office_hours] for our weekly "Lunch & Learn" sessions. It's **FREE** for everyone!
+
+[![zoom](https://img.cloudposse.com/fit-in/200x200/https://cloudposse.com/wp-content/uploads/2019/08/Powered-by-Zoom.png")][office_hours]
 
 ## Contributing
 
@@ -344,7 +400,7 @@ Please use the [issue tracker](https://github.com/dabble-of-devops-bioanalyze/te
 
 ### Developing
 
-If you are interested in being a contributor and want to get involved in developing this project or help out with other projects, I would love to hear from you! Shoot me an email at jillian@dabbleofdevops.com.
+If you are interested in being a contributor and want to get involved in developing this project or [help out](https://cpco.io/help-out) with our other projects, we would love to hear from you! Shoot us an [email][email].
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
@@ -354,24 +410,13 @@ In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
  4. **Push** your work back up to your fork
  5. Submit a **Pull Request** so that we can review your changes
 
-#### Developer Notes
-
-The `README.md` is created using the standard [CloudPosse](https://github.com/cloudposse/terraform-example-module) template that has been modified to use BioAnalyze information and URLs, and other documentation is generated using [jupyter-book](https://jupyterbook.org/).
-
-Terraform code does not render properly when using the `literalinclude` directive, so instead we use `pygmentize` to render it to html which is included directly.
-
-```
-.. raw:: html
-   :file: ./_html/main.tf.html
-```
-
 **NOTE:** Be sure to merge the latest changes from "upstream" before making a pull request!
 
 
 
 ## Copyrights
 
-Copyright © 2020-2022 [Dabble of DevOps, SCorp](https://www.dabbleofdevops.com)
+Copyright © 2020-2023 [Dabble of DevOps, SCorp](https://www.dabbleofdevops.com)
 
 
 
@@ -414,25 +459,33 @@ under the License.
 
 All other trademarks referenced herein are the property of their respective owners.
 
+## About
+
+This project is maintained and funded by [Cloud Posse, LLC][website]. Like it? Please let us know by [leaving a testimonial][testimonial]!
+
+[![Cloud Posse][logo]][website]
+
+We're a [DevOps Professional Services][hire] company based in Los Angeles, CA. We ❤️  [Open Source Software][we_love_open_source].
+
+We offer [paid support][commercial_support] on all of our projects.
+
+Check out [our other projects][github], [follow us on twitter][twitter], [apply for a job][jobs], or [hire us][hire] to help with your cloud strategy and implementation.
+
 
 
 ### Contributors
 
 <!-- markdownlint-disable -->
 |  [![Jillian Rowe][jerowe_avatar]][jerowe_homepage]<br/>[Jillian Rowe][jerowe_homepage] |
+|---|
 <!-- markdownlint-restore -->
 
   [jerowe_homepage]: https://github.com/jerowe
   [jerowe_avatar]: https://img.cloudposse.com/150x150/https://github.com/jerowe.png
 
-Learn more at [Dabble of DevOps](https://www.dabbleofdevops.com)
-
-## Sponsor
-
-BioAnalyze is and will always be open source. If you've found any of these resources helpful, please consider donating to the continued development of BioAnalyze.
-
-[Sponsor BioAnalyze](https://github.com/sponsors/dabble-of-devops-bioanalyze)
-
+[![README Footer][readme_footer_img]][readme_footer_link]
+[![Beacon][beacon]][website]
+<!-- markdownlint-disable -->
   [logo]: https://cloudposse.com/logo-300x69.svg
   [docs]: https://cpco.io/docs?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow&utm_content=docs
   [website]: https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow&utm_content=website
@@ -463,3 +516,4 @@ BioAnalyze is and will always be open source. If you've found any of these resou
   [share_googleplus]: https://plus.google.com/share?url=https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow
   [share_email]: mailto:?subject=terraform-aws-eks-bitnami-apache-airflow&body=https://github.com/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow
   [beacon]: https://ga-beacon.cloudposse.com/UA-76589703-4/dabble-of-devops-bioanalyze/terraform-aws-eks-bitnami-apache-airflow?pixel&cs=github&cm=readme&an=terraform-aws-eks-bitnami-apache-airflow
+<!-- markdownlint-restore -->
